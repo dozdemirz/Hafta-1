@@ -1,48 +1,40 @@
 import java.util.Scanner;
-// Arkadaşlar selam, kodu test etmek için PatikaPlus altında bulabileceğiniz Main.java programını kullanabilirsiniz.
-// Temelde Main.java'da olduğu gibi bu programı başka bir main method'u ile çağırarak çalıştırabilirsiniz.
+public class Main {
+    public static void main(String[] args) {
 
-import java.util.Scanner;
+        //Değişken
+        int birthDate;
+        String horoscope="";
+        Boolean isError=false;
 
-public class AirfareCalculator {
-    public static void FareCalc() {
-        Scanner scanner = new Scanner(System.in);
+        //Scanner objesi
+        Scanner inpt = new Scanner(System.in);
 
-        // Mesafe (KM), Yaş ve Yolculuk Tipi (1: Tek Yön, 2: Gidiş-Dönüş) bilgilerini alıyoruz.
-        System.out.print("Mesafe (KM): ");
-        int mesafe = scanner.nextInt();
+        //Kullanıcı verisi al
+        System.out.print("Lütfen doğum yılınızı giriniz :");
+        birthDate = inpt.nextInt();
+        int number = (birthDate % 12);
 
-        System.out.print("Yaşınız: ");
-        int yas = scanner.nextInt();
-
-        System.out.print("Yolculuk Tipi (1: Tek Yön, 2: Gidiş-Dönüş): ");
-        int yolculukTipi = scanner.nextInt();
-
-        // Veri doğrulama: Mesafe, yaş ve yolculuk tipi geçerli mi kontrol ediyoruz.
-        if (mesafe <= 0 || yas <= 0 || (yolculukTipi != 1 && yolculukTipi != 2)) {
-            System.out.println("Hatalı Veri Girdiniz !");
-            return;
+        //Burcu bulmak için switch yapısını kullan
+        switch (number) {
+            case 0 -> horoscope = " Maymun";
+            case 1 -> horoscope = " Horoz";
+            case 2 -> horoscope = " Köpek";
+            case 3 -> horoscope = " Domuz";
+            case 4 -> horoscope = " Fare";
+            case 5 -> horoscope = " Öküz";
+            case 6 -> horoscope = " Kaplan";
+            case 7 -> horoscope = " Tavşan";
+            case 8 -> horoscope = " Ejderha";
+            case 9 -> horoscope = " Yılan";
+            case 10 -> horoscope = " At";
+            case 11 -> horoscope = " Koyun";
+            default -> isError = true;
         }
-
-        // Mesafe başına ücret (0.10 TL/KM)
-        double ucret = mesafe * 0.10;
-
-        // Yaş indirimleri
-        if (yas < 12) {
-            ucret *= 0.5; // 12 yaşından küçükse %50 indirim
-        } else if (yas <= 24) {
-            ucret *= 0.9; // 12-24 yaş arası ise %10 indirim
-        } else if (yas >= 65) {
-            ucret *= 0.7; // 65 yaşından büyükse %30 indirim
+        if (isError){
+            System.out.print("Hatalı giriş yaptınız!");
+        }else {
+            System.out.print("Çin Zodyağı Burcunuz : "+horoscope);
         }
-
-        // Yolculuk tipi indirimi (Gidiş-Dönüş)
-        if (yolculukTipi == 2) {
-            ucret *= 0.8; // Gidiş-Dönüşse %20 indirim
-        }
-
-        System.out.println("Toplam Bilet Fiyatı: " + ucret + " TL");
-
-        scanner.close();
     }
 }
