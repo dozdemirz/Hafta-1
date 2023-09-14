@@ -10,7 +10,7 @@ public class Main {
         while (sayi % 2 == 0) {
             System.out.println("Sayı giriniz:");
             sayi = input.nextInt();
-         if (sayi % 4 == 0) {
+            if (sayi % 4 == 0) {
                 toplam += sayi;
             }
         }
